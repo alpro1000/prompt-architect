@@ -13,6 +13,14 @@ async def generate_reply(prompt: str) -> str:
     try:
         async with httpx.AsyncClient() as client:
             response = await client.post("https://api.openai.com/v1/chat/completions", json=json_data, headers=headers)
-            return response.json()["choices"][0]["message"]["content"]
+
+            # Проверка успешного ответа
+            if response.status_code == 200:
+                data = response.json()
+                return data["choices"][0]["message"]["content"]
+            else:
+                error_details = response.json()
+                return f"❌ OpenAI API ошибка {response.status_code}: {error_details.get('error', {}).get('message', 'Неизвестная ошибка')}"
+
     except Exception as e:
-        return f"❌ Ошибка: {e}"
+        return f"❌ Ошибка запроса: {e}"
