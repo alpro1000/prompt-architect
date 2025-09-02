@@ -1,7 +1,0 @@
-{
-  "welcome": "Welcome to Prompt Architect v1.2! Please describe your task.",
-  "generating": "Generating prompt...",
-  "error": "Something went wrong. Please try again later.",
-  "output_title": "Here is your structured prompt:"
-}
-
