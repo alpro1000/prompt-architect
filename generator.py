@@ -7,7 +7,7 @@ async def generate_reply(prompt: str) -> str:
         "Content-Type": "application/json"
     }
     json_data = {
-        "model": "gpt-4",
+        "model": "gpt5",
         "messages": [{"role": "user", "content": prompt}]
     }
     try:
